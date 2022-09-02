@@ -37,7 +37,7 @@ Base	*generate(void)
 }
 
 /* Prints the actual type of the object pointed */
-void	indentify(Base *p)
+void	identify(Base *p)
 {
 	if (dynamic_cast<A *>(p) != NULL)
 		std::cout << "A" << std::endl;
@@ -48,7 +48,7 @@ void	indentify(Base *p)
 }
 
 /* Prints the actual type of the object pointed without using a pointer inside this function */
-void	indentify(Base &p)
+void	identify(Base &p)
 {
 	if (dynamic_cast<A *>(&p) != NULL)
 		std::cout << "A" << std::endl;
@@ -63,8 +63,8 @@ int	main(void)
 	std::cout << "\n---------- EX02 Random Test ----------\n" << std::endl;
     Base *random = generate();
     
-    indentify(random);
-    indentify(*random);
+    identify(random);
+    identify(*random);
 
     delete random;
     return (0);
