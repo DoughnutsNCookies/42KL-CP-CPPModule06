@@ -6,7 +6,7 @@
 /*   By: schuah <schuah@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 18:16:15 by schuah            #+#    #+#             */
-/*   Updated: 2022/09/01 18:41:37 by schuah           ###   ########.fr       */
+/*   Updated: 2023/02/23 14:50:52 by schuah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,27 @@ void	identify(Base *p)
 /* Prints the actual type of the object pointed without using a pointer inside this function */
 void	identify(Base &p)
 {
-	if (dynamic_cast<A *>(&p) != NULL)
-		std::cout << "A" << std::endl;
-	if (dynamic_cast<B *>(&p) != NULL)
-		std::cout << "B" << std::endl;
-	if (dynamic_cast<C *>(&p) != NULL)
-		std::cout << "C" << std::endl;
+	try
+	{
+		A&	a = dynamic_cast<A&>(p);
+		(void)a;
+		std::cout << "A" << std::endl; 
+	}
+	catch(const std::exception& e) {}
+	try
+	{
+		B&	b = dynamic_cast<B&>(p);
+		(void)b;
+		std::cout << "B" << std::endl; 
+	}
+	catch(const std::exception& e) {}
+	try
+	{
+		C&	c = dynamic_cast<C&>(p);
+		(void)c;
+		std::cout << "C" << std::endl; 
+	}
+	catch(const std::exception& e) {}
 }
 
 int	main(void)
